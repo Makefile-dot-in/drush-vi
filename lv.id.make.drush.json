@@ -1,0 +1,53 @@
+{
+    "app-id" : "lv.id.make.drush",
+    "runtime" : "org.freedesktop.Platform",
+    "runtime-version" : "22.08",
+    "sdk" : "org.freedesktop.Sdk",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.vala"
+    ],
+    "command" : "drush",
+    "finish-args" : [
+        "--device=dri",
+        "--socket=wayland"
+    ],
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/vala/bin",
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
+    },
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "/share/vala",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+	{
+    		"name": "libgee",
+    		"sources": [
+		      {
+			"type": "archive",
+			"url": "https://download.gnome.org/sources/libgee/0.20/libgee-0.20.4.tar.xz",
+			"sha256": "524c1bf390f9cdda4fbd9a47b269980dc64ab5280f0801b53bc69d782c72de0e"
+		      }
+		]
+	},
+        {
+            "name" : "drush",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "file:///home/make/projects/programming/vala"
+                }
+            ]
+        }
+    ]
+}
