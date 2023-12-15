@@ -20,7 +20,7 @@
 
 int main (string[] args)
 {
-    Game g = new Game();
+    Drush.Game g = new Drush.Game();
     g.init();
     g.run();
 	return 0;
